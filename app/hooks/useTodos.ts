@@ -10,7 +10,7 @@ interface Todo {
 
 const fetchTodos = async (): Promise<Todo[]> => {
 	const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos", {
-		params: { _limit: 100 }, // Загружаем 100 задач (если надо изменить — измени здесь)
+		params: { _limit: 50 }, // Загружаем 100 задач (если надо изменить — измени здесь)
 	})
 	return data
 }
