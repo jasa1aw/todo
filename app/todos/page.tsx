@@ -1,23 +1,29 @@
 "use client"
 
-import { useTodos } from "@/hooks/useTodos"
-import { useTodoStore } from "@/store/todoStore"
-import TodoList from "@/components/TodoList"
-import SearchBar from "@/components/SearchBar"
-import Pagination from "@/components/Pagination"
-import Filter from "@/components/Filter"
-import Loader from "@/components/Loader"
+import { useTodos } from "@/hooks/useTodos";
+import { useTodoStore } from "@/store/todoStore";
+import TodoList from "@/components/TodoList";
+import SearchBar from "@/components/SearchBar";
+import Pagination from "@/components/Pagination";
+import Filter from "@/components/Filter";
+import Loader from "@/components/Loader";
+import { useEffect } from 'react'
 
 const ITEMS_PER_PAGE = 10
 
 export default function TodosPage() {
 	const { data: todos = [], isLoading, isError } = useTodos()
-	const { filter, searchQuery, currentPage } = useTodoStore()
+	const { filter, searchQuery, currentPage} = useTodoStore()
+
+	// useEffect(() => {
+	// 	if (todos.length > 0) {
+	// 		setTodos(todos)
+	// 	}
+	// }, [todos, setTodos])
 
 	if (isLoading) return <Loader />
 	if (isError) return <p className="text-red-500">Ошибка загрузки данных</p>
 
-	// Фильтрация и поиск
 	const filteredTodos = todos
 		.filter((todo) => {
 			if (filter === "completed") return todo.completed
@@ -26,7 +32,6 @@ export default function TodosPage() {
 		})
 		.filter((todo) => todo.title.toLowerCase().includes(searchQuery.toLowerCase()))
 
-	// Разбиение на страницы
 	const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
 	const paginatedTodos = filteredTodos.slice(startIndex, startIndex + ITEMS_PER_PAGE)
 

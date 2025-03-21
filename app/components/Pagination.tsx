@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useTodoStore } from "@/store/todoStore"
-import { useMemo } from "react"
+import { useTodoStore } from "@/store/todoStore";
+import { useMemo } from "react";
 
 type PaginationProps = {
 	totalItems: number
@@ -43,7 +43,7 @@ export default function Pagination({ totalItems, itemsPerPage }: PaginationProps
 
 			{pages.map((page, index) =>
 				page === "..." ? (
-					<span key={index} className="px-3 py-2 text-gray-500">
+					<span key={`ellipsis-${index}`} className="px-3 py-2 text-gray-500">
 						...
 					</span>
 				) : (

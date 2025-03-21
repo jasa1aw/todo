@@ -1,4 +1,4 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
 type Filter = "all" | "completed" | "incomplete"
 
@@ -23,20 +23,21 @@ interface TodoState {
 }
 
 export const useTodoStore = create<TodoState>((set) => ({
-	todos: [], // Список задач
+	todos: [],
 	filter: "all",
 	searchQuery: "",
 	currentPage: 1,
-	itemsPerPage: 10, // По умолчанию 10 задач на страницу
+	itemsPerPage: 10,
+
 	setCurrentPage: (page) => set({ currentPage: page }),
 	setItemsPerPage: (count) => set({ itemsPerPage: count }),
 	setFilter: (filter) => set({ filter }),
 	setSearchQuery: (query) => set({ searchQuery: query }),
-	setTodos: (todos) => set({ todos }),
 	toggleComplete: (id) =>
 		set((state) => ({
 			todos: state.todos.map((todo) =>
 				todo.id === id ? { ...todo, completed: !todo.completed } : todo
 			),
 		})),
+	setTodos: (todos) => set({ todos }),
 }))

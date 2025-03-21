@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 interface Todo {
 	userId: number
@@ -8,10 +8,9 @@ interface Todo {
 	completed: boolean
 }
 
-// Функция загрузки задач с API
 const fetchTodos = async (): Promise<Todo[]> => {
 	const { data } = await axios.get("https://jsonplaceholder.typicode.com/todos", {
-		params: { _limit: 220 }, // Загружаем 110 задач (если надо 200 — измени здесь)
+		params: { _limit: 100 }, // Загружаем 100 задач (если надо изменить — измени здесь)
 	})
 	return data
 }

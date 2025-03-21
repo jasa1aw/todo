@@ -1,7 +1,7 @@
 'use client'
-import Loader from '@/components/Loader'
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import Loader from '@/components/Loader';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { useParams, useRouter } from 'next/navigation';
 
 const fetchTodo = async (id: string) => {

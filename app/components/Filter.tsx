@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useTodoStore } from "@/store/todoStore"
 

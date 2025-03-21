@@ -1,5 +1,4 @@
-import TodosPage from '@/todos/page'
-
+import TodosPage from '@/todos/page';
 
 export default function Home() {
   return (

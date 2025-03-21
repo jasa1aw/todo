@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useTodoStore } from "@/store/todoStore"
+import { useTodoStore } from "@/store/todoStore";
 
 export default function SearchBar() {
 	const { searchQuery, setSearchQuery } = useTodoStore()
